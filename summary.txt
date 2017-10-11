@@ -1,0 +1,31 @@
+| ✔ ✘ |                 Domains                 |     Categories      |             Stack Name / Console             |    Regions     |      AWS Services       |         Remarks          |
+| --- | --------------------------------------- | ------------------- | -------------------------------------------- | -------------- | ----------------------- | ------------------------ |
+| ✔   | *.goldenbearkin.com                     | authentication      | console                                      | ap-northeast-1 | Cognito                 | user pool: goldenbearkin |
+| ✔   | *.goldenbearkin.com                     | ssl-certificate     | console                                      | us-east-1      | Certificate Manager     | *.goldenbearkin.com      |
+| ✔   | www.goldenbearkin.com                   | network-resources   | network-resources--www-goldenbearkin-com     | ap-northeast-1 | S3, Route53, CloudFront |                          |
+| ✔   | cognito.goldenbearkin.com               | network-resources   | network-resources--cognito-goldenbearkin-com | ap-northeast-1 | S3, Route53, CloudFront |                          |
+| ✔   | apis.goldenbearkin.com/apolloserverdemo | apigw-custom-domain | apis-apolloserverdemo                        | ap-northeast-1 | APIGW, Lambda, Route53  |                          |
+
+** create-stack
+aws cloudformation create-stack \
+  --stack-name **stack-name** \
+  --template-body file://**filename**.yaml
+
+** create-change-set
+aws cloudformation create-change-set \ 
+  --stack-name **stack-name** \ 
+  --change-set-name **change-set-name** \
+  --template-body file://**filename**.yaml
+
+** execute-change-set
+aws cloudformation execute-change-set \ 
+  --stack-name **stack-name** \
+  --change-set-name **change-set-name** 
+
+** delete-stack
+aws cloudformation delete-stack \ 
+  --stack-name **stack-name** \
+
+** validate-template
+aws cloudformation validate-template \
+  --template-body file://**filename**.yaml

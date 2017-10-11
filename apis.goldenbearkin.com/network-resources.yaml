@@ -1,0 +1,17 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: network resources for apis.goldenbearkin.com
+Parameters:
+  DomainName:
+    Type: String
+    Description: The site domain name (e.g. example.com)
+  SubDomainName:
+    Type: String
+    Description: The site sub-domain name (e.g. www)
+  AcmCertificateArn:
+    Type: String
+Resources:
+  ApiDomainName:
+    Type: AWS::ApiGateway::DomainName
+    Properties:
+      DomainName: !Sub ${SubDomainName}.${DomainName}
+      CertificateArn: !Ref AcmCertificateArn
