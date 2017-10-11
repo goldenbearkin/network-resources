@@ -15,3 +15,8 @@ Resources:
     Properties:
       DomainName: !Sub ${SubDomainName}.${DomainName}
       CertificateArn: !Ref AcmCertificateArn
+Outputs:
+  domainName:
+    Value: !GetAtt 
+      - ApiDomainName
+      - DistributionDomainName
