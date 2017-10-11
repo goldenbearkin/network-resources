@@ -163,3 +163,10 @@ Resources:
         ViewerCertificate:
           SslSupportMethod: sni-only
           AcmCertificateArn: !Ref AcmCertificateArn
+Outputs:
+  domainName:
+    Value: !GetAtt 
+      - WWWWebCloudFront
+      - DomainName
+  DistributionId:
+    Value: !Ref WWWWebCloudFront
