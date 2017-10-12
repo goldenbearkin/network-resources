@@ -15,6 +15,19 @@ Resources:
     Properties:
       DomainName: !Sub ${SubDomainName}.${DomainName}
       CertificateArn: !Ref AcmCertificateArn
+  ApiDNS:
+    Type: AWS::Route53::RecordSetGroup
+    Properties:
+      HostedZoneName: !Sub ${DomainName}.
+      RecordSets:
+      - 
+        Name: !Sub ${SubDomainName}.${DomainName}.
+        Type: A
+        AliasTarget:
+          HostedZoneId: Z2FDTNDATAQYW2
+          DNSName: !GetAtt 
+            - ApiDomainName
+            - DistributionDomainName
 Outputs:
   domainName:
     Value: !GetAtt 
